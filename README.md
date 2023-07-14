@@ -52,6 +52,8 @@ The application was designed and structured using a modular approach, emphasizin
 
 To achieve this modular architecture, the application leverages a component-based approach where each file handles a specific aspect of the page's functionality. Firstly, there is a dedicated file responsible for managing the view, defining the layout, and rendering the user interface components. This separation allows for a clear and intuitive understanding of the visual presentation of the page, making it easier to modify or update the UI elements as needed.
 
+The application view was designed with a mobile first approach and its fully responsive to different screen sizes. 
+
 In addition to the view file, another file focuses on handling the logic behind the page's functionality, employing the power of React hooks. These hooks enable efficient state management, allowing the application to respond to user interactions, manage data flow, and execute necessary computations. By encapsulating the logic within its dedicated file, the codebase remains organized and promotes reusability, facilitating easier maintenance and future enhancements.
 
 Furthermore, the application utilizes another file dedicated to managing server calls and API interactions. This file handles all communication with external services or data sources, abstracting away the complexities of network requests. By encapsulating the server-side logic, this separation of concern ensures a clear distinction between client-side rendering and server-side operations, enhancing the application's scalability and extensibility.
