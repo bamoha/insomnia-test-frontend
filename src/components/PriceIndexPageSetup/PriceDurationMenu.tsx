@@ -14,7 +14,7 @@ import styles from '../../page.module.css';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
 interface PriceDurationMenuProps {
-    updateByDuration: (selected: string) => void;
+    updateByDuration: (selected: number) => void;
 }
 
 const PriceDurationMenu: FC<PriceDurationMenuProps> = ({
@@ -35,10 +35,18 @@ const PriceDurationMenu: FC<PriceDurationMenuProps> = ({
                 Duration <ChevronDownIcon />
             </MenuButton>
             <MenuList>
-                <MenuItem>30 secs</MenuItem>
-                <MenuItem>1 min</MenuItem>
-                <MenuItem>3 min</MenuItem>
-                <MenuItem>5 min</MenuItem>
+                <MenuItem onClick={() => updateByDuration(5000)}>
+                    5 secs
+                </MenuItem>
+                <MenuItem onClick={() => updateByDuration(10000)}>
+                    10 secs
+                </MenuItem>
+                <MenuItem onClick={() => updateByDuration(20000)}>
+                    20 secs
+                </MenuItem>
+                <MenuItem onClick={() => updateByDuration(30000)}>
+                    30 secs
+                </MenuItem>
             </MenuList>
         </Menu>
     );

@@ -1,40 +1,22 @@
-import { Box, Center, HStack, Text } from '@chakra-ui/react';
-import { FC, ReactNode, useEffect, useState } from 'react';
+import { Box, Center, Text } from '@chakra-ui/react';
+import { FC } from 'react';
 import styles from '../../page.module.css';
 import PriceIndexCard from './PriceIndexHead';
 import PriceIndexDetails from './PriceIndexDetails';
 import useFetchIndex from './useFetchIndex';
-import { SelectedIndex } from '@/types';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 const PriceIndexPage: FC = () => {
-    const { priceIndexBody, handleGetOrderSummary, isLoading } =
-        useFetchIndex();
-    const [selected, setSelected] = useState<SelectedIndex>();
-    const [selectedCurrency, setSelectedCurrency] = useLocalStorage(
-        'selectedCurrency',
-        ''
-    );
-
-    useEffect(() => {
-        if (priceIndexBody) {
-            const checkSelected =
-                selectedCurrency === 0
-                    ? Object.values(priceIndexBody.bpi)[0]
-                    : priceIndexBody?.bpi[selectedCurrency];
-
-            setSelected(checkSelected);
-        }
-    }, [priceIndexBody, selected]);
-
-    const updateByCurrency = (selectedFromDropdown: string) => {
-        setSelected(priceIndexBody?.bpi[selectedFromDropdown]);
-        setSelectedCurrency(selectedFromDropdown);
-    };
-    const updateByDuration = (selectedFromDropdown: string) => {
-        setSelected(priceIndexBody?.bpi[selectedFromDropdown]);
-        setSelectedCurrency(selectedFromDropdown);
-    };
+    const defaultInterval = 5000;
+    const {
+        priceIndexBody,
+        handleGetOrderSummary,
+        isLoading,
+        updateByDuration,
+        selected,
+        updateByCurrency,
+    } = useFetchIndex({
+        defaultInterval,
+    });
 
     return (
         <Box className={styles.priceIndexPage}>

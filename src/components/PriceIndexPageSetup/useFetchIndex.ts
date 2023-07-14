@@ -1,11 +1,23 @@
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 import fetchPriceIndex from '@/queries/fetchPriceIndex';
-import { PriceIndexResponse } from '@/types';
+import { PriceIndexResponse, SelectedIndex } from '@/types';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
-const useFetchIndex = () => {
+const useFetchIndex = ({ defaultInterval }: { defaultInterval: number }) => {
     const [priceIndexBody, setPriceIndexBody] = useState<PriceIndexResponse>();
+    const [refreshInterval, setRefreshInterval] =
+        useState<number>(defaultInterval);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [selected, setSelected] = useState<SelectedIndex>();
+    const [selectedCurrency, setSelectedCurrency] = useLocalStorage(
+        'selectedCurrency',
+        ''
+    );
+    const [selectedDuration, setSelectedDuration] = useLocalStorage(
+        'selectedDuration',
+        ''
+    );
 
     const handleGetOrderSummary = async () => {
         setIsLoading(true);
@@ -20,14 +32,45 @@ const useFetchIndex = () => {
         setIsLoading(false);
     };
 
+    const updateByDuration = (value: number): void => {
+        setRefreshInterval(value);
+        setSelectedDuration(value);
+    };
+
+    useEffect(() => {
+        if (priceIndexBody) {
+            const checkSelected =
+                selectedCurrency === 0
+                    ? Object.values(priceIndexBody.bpi)[0]
+                    : priceIndexBody?.bpi[selectedCurrency];
+
+            setSelected(checkSelected);
+        }
+        const checkDuration = selectedDuration
+            ? selectedDuration
+            : defaultInterval;
+        setRefreshInterval(checkDuration);
+    }, [priceIndexBody, selected]);
+
+    const updateByCurrency = (selectedFromDropdown: string) => {
+        setSelected(priceIndexBody?.bpi[selectedFromDropdown]);
+        setSelectedCurrency(selectedFromDropdown);
+    };
+
     useEffect(() => {
         handleGetOrderSummary();
-    }, []);
+        const interval = setInterval(handleGetOrderSummary, refreshInterval);
+
+        return (): void => clearInterval(interval);
+    }, [refreshInterval]);
 
     return {
         priceIndexBody,
         handleGetOrderSummary,
+        updateByDuration,
         isLoading,
+        updateByCurrency,
+        selected,
     };
 };
 

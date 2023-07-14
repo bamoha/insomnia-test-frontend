@@ -1,8 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+
+## Insomnia Developer Test
+
+This React.js/Next.js application showcases a seamless user experience through two pages: the Bitcoin Price Index and NFT List. The Bitcoin Price Index provides data on bitcoin, while the NFT List presents a curated collection of NFT artworks. Styled with Chakra UI and CSS, React.js and Next.js, this application ensures fast data retrieval, smooth navigation, and an immersive browsing experience, making it a reliable and cutting-edge solution in the world of web applications.
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository
+
+```bash
+git clone https://github.com/bamoha/insomnia-test-frontend.git
+```
+
+2. Install dependencies
+
+```bash
+npm i
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
@@ -14,21 +34,27 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The application is deployed to [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Learn More
+## Stack
 
-To learn more about Next.js, take a look at the following resources:
+1. NextJs/React
+2. Chakra UI
+3. Typescript
+4. React Toastify
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Design Decisions
 
-## Deploy on Vercel
+The application was designed and structured using a modular approach, emphasizing the importance of separation of concerns to ensure clean and maintainable code. Each page within the application adheres to this principle, effectively dividing the responsibilities across multiple files.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To achieve this modular architecture, the application leverages a component-based approach where each file handles a specific aspect of the page's functionality. Firstly, there is a dedicated file responsible for managing the view, defining the layout, and rendering the user interface components. This separation allows for a clear and intuitive understanding of the visual presentation of the page, making it easier to modify or update the UI elements as needed.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+In addition to the view file, another file focuses on handling the logic behind the page's functionality, employing the power of React hooks. These hooks enable efficient state management, allowing the application to respond to user interactions, manage data flow, and execute necessary computations. By encapsulating the logic within its dedicated file, the codebase remains organized and promotes reusability, facilitating easier maintenance and future enhancements.
+
+Furthermore, the application utilizes another file dedicated to managing server calls and API interactions. This file handles all communication with external services or data sources, abstracting away the complexities of network requests. By encapsulating the server-side logic, this separation of concern ensures a clear distinction between client-side rendering and server-side operations, enhancing the application's scalability and extensibility.
+
+By adopting this modular structure, the application benefits from improved code readability, easier collaboration among team members, and enhanced code reusability. This separation of concerns allows developers to focus on specific aspects of functionality without being overwhelmed by unrelated code, facilitating efficient debugging and making it easier to maintain and scale the application over time.
+

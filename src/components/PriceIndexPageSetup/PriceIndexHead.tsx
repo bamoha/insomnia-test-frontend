@@ -10,7 +10,7 @@ interface PriceIndexCardProps {
     priceIndexBody: PriceIndexResponse;
     selected: SelectedIndex;
     updateByCurrency: (selected: string) => void;
-    updateByDuration: (selected: string) => void;
+    updateByDuration: (selected: number) => void;
 }
 
 const PriceIndexCard: FC<PriceIndexCardProps> = ({
