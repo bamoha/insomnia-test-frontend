@@ -42,14 +42,11 @@ const useFetchIndex = () => {
     useEffect(() => {
         if (priceIndexBody) {
             const checkSelected =
-                selectedCurrency === 0
+                !selectedCurrency || selectedCurrency === 0
                     ? Object.values(priceIndexBody.bpi)[0]
                     : priceIndexBody?.bpi[selectedCurrency];
 
             setSelected(checkSelected);
-            console.log(checkSelected);
-
-            console.log(selectedCurrency);
         }
         const checkDuration = selectedDuration
             ? selectedDuration

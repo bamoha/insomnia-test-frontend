@@ -40,7 +40,7 @@ const PriceCurrencyMenu: FC<PriceCurrencyMenuProps> = ({
             </MenuButton>
             <MenuList>
                 {Object.keys(CurrencyMap).map((item) => (
-                    <MenuItem onClick={() => updateByCurrency(item)}>
+                    <MenuItem key={item} onClick={() => updateByCurrency(item)}>
                         {item}
                     </MenuItem>
                 ))}
