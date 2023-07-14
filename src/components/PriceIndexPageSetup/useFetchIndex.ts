@@ -45,6 +45,9 @@ const useFetchIndex = ({ defaultInterval }: { defaultInterval: number }) => {
                     : priceIndexBody?.bpi[selectedCurrency];
 
             setSelected(checkSelected);
+            console.log(checkSelected);
+
+            console.log(selectedCurrency);
         }
         const checkDuration = selectedDuration
             ? selectedDuration
