@@ -1,7 +1,7 @@
 import { Box, Center, Text } from '@chakra-ui/react';
 import { FC } from 'react';
 import styles from '../../page.module.css';
-import PriceIndexCard from './PriceIndexHead';
+import PriceIndexHead from './PriceIndexHead';
 import PriceIndexDetails from './PriceIndexDetails';
 import useFetchIndex from './useFetchIndex';
 
@@ -13,17 +13,19 @@ const PriceIndexPage: FC = () => {
         updateByDuration,
         selected,
         updateByCurrency,
+        refreshInterval,
     } = useFetchIndex();
 
     return (
         <Box className={styles.priceIndexPage}>
             {priceIndexBody && selected && !isLoading ? (
                 <>
-                    <PriceIndexCard
+                    <PriceIndexHead
                         priceIndexBody={priceIndexBody}
                         selected={selected}
                         updateByCurrency={updateByCurrency}
                         updateByDuration={updateByDuration}
+                        currentDuration={refreshInterval}
                     />
                     <PriceIndexDetails
                         selected={selected}

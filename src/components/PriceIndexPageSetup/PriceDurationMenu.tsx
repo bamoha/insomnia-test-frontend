@@ -12,19 +12,22 @@ import {
 import { FC, ReactNode } from 'react';
 import styles from '../../page.module.css';
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import { DurationMap } from '@/utils';
 
 interface PriceDurationMenuProps {
     updateByDuration: (selected: number) => void;
+    currentDuration: number;
 }
 
 const PriceDurationMenu: FC<PriceDurationMenuProps> = ({
     updateByDuration,
+    currentDuration,
 }) => {
     return (
         <Menu>
             <MenuButton
                 px={0}
-                py={2}
+                pt={2}
                 transition="all 0.2s"
                 borderRadius="md"
                 borderWidth="0"
@@ -32,21 +35,23 @@ const PriceDurationMenu: FC<PriceDurationMenuProps> = ({
                 _expanded={{ bg: 'none' }}
                 _focus={{ boxShadow: 'none' }}
             >
-                Duration <ChevronDownIcon />
+                Duration[
+                {
+                    DurationMap.filter(
+                        (item) => item.value === currentDuration
+                    )[0].name
+                }
+                ] <ChevronDownIcon />
             </MenuButton>
             <MenuList>
-                <MenuItem onClick={() => updateByDuration(5000)}>
-                    5 secs
-                </MenuItem>
-                <MenuItem onClick={() => updateByDuration(10000)}>
-                    10 secs
-                </MenuItem>
-                <MenuItem onClick={() => updateByDuration(20000)}>
-                    20 secs
-                </MenuItem>
-                <MenuItem onClick={() => updateByDuration(30000)}>
-                    30 secs
-                </MenuItem>
+                {DurationMap.map((item) => (
+                    <MenuItem
+                        key={item.value}
+                        onClick={() => updateByDuration(item.value)}
+                    >
+                        {item.name}
+                    </MenuItem>
+                ))}
             </MenuList>
         </Menu>
     );

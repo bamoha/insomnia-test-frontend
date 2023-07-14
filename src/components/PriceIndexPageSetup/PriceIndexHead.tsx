@@ -6,25 +6,33 @@ import PriceDurationMenu from './PriceDurationMenu';
 import { CurrencyMap, formatCurrency, formatDate } from '@/utils';
 import { PriceIndexResponse, SelectedIndex } from '@/types';
 
-interface PriceIndexCardProps {
+interface PriceIndexHeadProps {
     priceIndexBody: PriceIndexResponse;
     selected: SelectedIndex;
     updateByCurrency: (selected: string) => void;
     updateByDuration: (selected: number) => void;
+    currentDuration: number
 }
 
-const PriceIndexCard: FC<PriceIndexCardProps> = ({
+const PriceIndexHead: FC<PriceIndexHeadProps> = ({
     priceIndexBody,
     selected,
     updateByCurrency,
     updateByDuration,
+    currentDuration,
 }) => {
     return (
         <Box className={styles.priceIndexCard}>
             <Box h={'100%'} alignItems={'center'}>
                 <HStack mb={'5'} justifyContent={'space-between'}>
-                    <PriceCurrencyMenu updateByCurrency={updateByCurrency} />
-                    <PriceDurationMenu updateByDuration={updateByDuration} />
+                    <PriceCurrencyMenu
+                        currentCurrency={selected.code}
+                        updateByCurrency={updateByCurrency}
+                    />
+                    <PriceDurationMenu
+                        currentDuration={currentDuration}
+                        updateByDuration={updateByDuration}
+                    />
                 </HStack>
                 {selected && (
                     <Stack alignItems={'center'}>
@@ -48,4 +56,4 @@ const PriceIndexCard: FC<PriceIndexCardProps> = ({
     );
 };
 
-export default PriceIndexCard;
+export default PriceIndexHead;

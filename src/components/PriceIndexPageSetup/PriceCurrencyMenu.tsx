@@ -12,19 +12,23 @@ import {
 import { FC, ReactNode } from 'react';
 import styles from '../../page.module.css';
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { CurrencyMap } from '@/utils';
 
 interface PriceCurrencyMenuProps {
     updateByCurrency: (selected: string) => void;
+    currentCurrency: string;
 }
 
 const PriceCurrencyMenu: FC<PriceCurrencyMenuProps> = ({
     updateByCurrency,
+    currentCurrency,
 }) => {
     return (
         <Menu>
             <MenuButton
                 px={0}
-                py={2}
+                pt={2}
                 transition="all 0.2s"
                 borderRadius="md"
                 borderWidth="0"
@@ -32,12 +36,14 @@ const PriceCurrencyMenu: FC<PriceCurrencyMenuProps> = ({
                 _expanded={{ bg: 'none' }}
                 _focus={{ boxShadow: 'none' }}
             >
-                Currency <ChevronDownIcon />
+                Currency [{currentCurrency}] <ChevronDownIcon />
             </MenuButton>
             <MenuList>
-                <MenuItem onClick={() => updateByCurrency('USD')}>USD</MenuItem>
-                <MenuItem onClick={() => updateByCurrency('EUR')}>EUR</MenuItem>
-                <MenuItem onClick={() => updateByCurrency('GBP')}>GBP</MenuItem>
+                {Object.keys(CurrencyMap).map((item) => (
+                    <MenuItem onClick={() => updateByCurrency(item)}>
+                        {item}
+                    </MenuItem>
+                ))}
             </MenuList>
         </Menu>
     );

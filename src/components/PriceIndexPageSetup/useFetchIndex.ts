@@ -18,8 +18,8 @@ const useFetchIndex = () => {
     );
     const defaultInterval = selectedDuration || 5000;
 
-    const [refreshInterval, setRefreshInterval] =
-        useState<number>(defaultInterval);
+     const [refreshInterval, setRefreshInterval] =
+         useState<number>(defaultInterval);
 
     const handleGetOrderSummary = async () => {
         setIsLoading(true);
@@ -76,6 +76,7 @@ const useFetchIndex = () => {
         isLoading,
         updateByCurrency,
         selected,
+        refreshInterval,
     };
 };
 
