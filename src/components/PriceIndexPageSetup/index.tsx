@@ -18,6 +18,10 @@ const PriceIndexPage: FC = () => {
         defaultInterval,
     });
 
+    console.log(priceIndexBody);
+
+    console.log(selected);
+
     return (
         <Box className={styles.priceIndexPage}>
             {priceIndexBody && selected && !isLoading ? (
