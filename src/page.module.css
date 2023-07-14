@@ -1,0 +1,57 @@
+.pageLayout {
+    padding: 0 20px 10px;
+    background: rgb(194, 217, 253);
+    background: radial-gradient(
+        circle,
+        rgba(194, 217, 253, 1) 0%,
+        rgba(241, 199, 232, 1) 100%
+    );
+    color: #4f3c7e;
+}
+
+.priceIndexCard {
+    width: 100%;
+    padding: 30px 10px;
+}
+
+.priceIndexDetails {
+    background-color: white;
+    border-radius: 30px;
+}
+
+.priceIndexPage {
+    height: 100vh;
+    width: 100%;
+}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 1120px) {
+    .priceIndexPage {
+        max-width: 50%;
+    }
+
+    .pageLayout {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .vercelLogo {
+        filter: invert(1);
+    }
+
+    .logo {
+        filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
