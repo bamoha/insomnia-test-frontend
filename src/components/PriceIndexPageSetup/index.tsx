@@ -20,7 +20,7 @@ const PriceIndexPage: FC = () => {
 
     return (
         <Box className={styles.priceIndexPage}>
-            {priceIndexBody && selected ? (
+            {priceIndexBody && selected && !isLoading ? (
                 <>
                     <PriceIndexCard
                         priceIndexBody={priceIndexBody}
