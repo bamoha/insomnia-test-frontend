@@ -36,7 +36,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Deployment
 
-The application is deployed to [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application is deployed to [https://lustrous-palmier-5d1b56.netlify.app/](https://lustrous-palmier-5d1b56.netlify.app/) with your browser to see the result.
 
 ## Stack
 
