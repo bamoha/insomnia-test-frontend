@@ -4,10 +4,8 @@ import { PriceIndexResponse, SelectedIndex } from '@/types';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
-const useFetchIndex = ({ defaultInterval }: { defaultInterval: number }) => {
+const useFetchIndex = () => {
     const [priceIndexBody, setPriceIndexBody] = useState<PriceIndexResponse>();
-    const [refreshInterval, setRefreshInterval] =
-        useState<number>(defaultInterval);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [selected, setSelected] = useState<SelectedIndex>();
     const [selectedCurrency, setSelectedCurrency] = useLocalStorage(
@@ -18,6 +16,10 @@ const useFetchIndex = ({ defaultInterval }: { defaultInterval: number }) => {
         'selectedDuration',
         ''
     );
+    const defaultInterval = selectedDuration || 5000;
+
+    const [refreshInterval, setRefreshInterval] =
+        useState<number>(defaultInterval);
 
     const handleGetOrderSummary = async () => {
         setIsLoading(true);

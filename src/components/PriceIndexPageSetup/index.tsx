@@ -6,7 +6,6 @@ import PriceIndexDetails from './PriceIndexDetails';
 import useFetchIndex from './useFetchIndex';
 
 const PriceIndexPage: FC = () => {
-    const defaultInterval = 5000;
     const {
         priceIndexBody,
         handleGetOrderSummary,
@@ -14,9 +13,7 @@ const PriceIndexPage: FC = () => {
         updateByDuration,
         selected,
         updateByCurrency,
-    } = useFetchIndex({
-        defaultInterval,
-    });
+    } = useFetchIndex();
 
     return (
         <Box className={styles.priceIndexPage}>
